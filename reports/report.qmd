@@ -1,0 +1,66 @@
+---
+title: "Customer Sales Analysis Report"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This report analyzes customer sales data to understand purchasing patterns and customer behavior. The analysis focuses on demographic factors, spending patterns, and time-based trends.
+
+## Data Overview
+
+The dataset contains information about 10 customers, including their demographics and purchasing behavior. Let's start by examining some key statistics.
+
+```{python}
+#| echo: false
+import pandas as pd
+df = pd.read_csv('../data/customer_sales.csv')
+print(df.describe())
+```
+
+## Customer Demographics and Spending
+
+The age distribution of our customers shows an interesting pattern:
+
+![Age Distribution](../outputs/age_distribution.png)
+
+We can see that our customer base is fairly evenly distributed across different age groups, with a slight concentration in the 30-40 age range.
+
+## Spending Patterns
+
+The relationship between income and total spending reveals some interesting insights:
+
+![Income vs Total Spent](../outputs/income_vs_spent.png)
+
+There appears to be a positive correlation between income and total spending, though the relationship isn't perfectly linear. This suggests that while higher-income customers tend to spend more, there are other factors influencing purchasing decisions.
+
+## Daily Sales Trends
+
+Looking at the daily sales trend:
+
+![Daily Sales Trend](../outputs/daily_sales_trend.png)
+
+We can observe some variation in daily sales, with certain days showing higher spending patterns. This could be valuable information for inventory and staffing planning.
+
+## Key Findings
+
+1. **Demographic Distribution**: Our customer base is diverse in terms of age, with representation across different age groups.
+2. **Income-Spending Relationship**: Higher-income customers generally spend more, but the relationship is not strictly linear.
+3. **Daily Variations**: Sales show notable day-to-day variations, which could be important for operational planning.
+
+## Recommendations
+
+Based on this analysis, we recommend:
+
+1. Further investigation into the factors that influence spending beyond income level
+2. Analysis of product categories to understand what drives higher spending
+3. Consideration of targeted marketing strategies for different age groups
+4. Development of a more sophisticated inventory management system based on daily sales patterns
+
+## Conclusion
+
+This analysis provides valuable insights into customer behavior and spending patterns. The findings can be used to optimize business operations and develop more targeted marketing strategies. Further analysis with a larger dataset would help validate these findings and provide more detailed insights. 
