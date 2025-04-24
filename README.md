@@ -1,6 +1,6 @@
 # Customer Sales Analysis
 
-This repository contains a data analysis project focused on customer sales behavior and patterns.
+A simple R project for practicing data analysis and visualization.
 
 ## Project Structure
 
@@ -28,28 +28,18 @@ The dataset (`customer_sales.csv`) contains information about customer demograph
 To run the analysis scripts, you'll need:
 - R 4.0+
 - tidyverse
-- ggplot2
-- dplyr
-- tidyr
-- readr
-- quarto (for report generation)
 
 ## Usage
 
-1. Install the required R packages:
+1. Install the required R package:
 ```R
-install.packages(c("tidyverse", "ggplot2", "dplyr", "tidyr", "readr", "quarto"))
+install.packages("tidyverse")
 ```
 
 2. Run the analysis scripts:
 ```R
-Rscript scripts/analyze_sales.R
-Rscript scripts/visualize_data.R
-```
-
-3. Generate the report:
-```bash
-quarto render reports/report.qmd
+Rscript scripts/analyze_sales.R    # Generates summary stats and income vs spending plot
+Rscript scripts/visualize_data.R   # Generates daily sales trend plot
 ```
 
 ## License

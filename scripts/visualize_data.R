@@ -1,53 +1,62 @@
 # Load required packages
 library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(readr)
-library(lubridate)
+library(docopt)
 
-# Create outputs directory if it doesn't exist
-dir.create("../outputs", showWarnings = FALSE)
+"This script loads and cleans the dataset.
 
-# Read the data
-df <- read_csv("../data/customer_sales.csv") %>%
-  mutate(date = as.Date(date))
+Usage:
+  visualize_data.R --input=<input_file> --output_dir=<output_dir>
 
-# Calculate daily sales
-daily_sales <- df %>%
-  group_by(date) %>%
-  summarise(total_sales = sum(total_spent))
+Options:
+  --input=<input_file>    Path to raw data CSV file
+  --output_dir=<output_dir>   Path to save outputs
+" -> doc
 
-# Create daily sales trend plot
-ggplot(daily_sales, aes(x = date, y = total_sales)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Daily Sales Trend",
-       x = "Date",
-       y = "Total Sales ($)") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        plot.title = element_text(hjust = 0.5))
-ggsave("../outputs/daily_sales_trend.png", width = 12, height = 6)
+opt <- docopt(doc)
 
-# Create age distribution plot
-ggplot(df, aes(x = age, fill = gender)) +
-  geom_histogram(bins = 5, position = "stack") +
-  labs(title = "Age Distribution by Gender",
-       x = "Age",
-       y = "Count") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5))
-ggsave("../outputs/age_distribution.png", width = 10, height = 6)
+visualize_data <- function(input_file, output_dir) {
 
-# Calculate and save average spending by age group
-age_group_stats <- df %>%
-  mutate(age_group = cut(age, 
-                        breaks = c(20, 30, 40, 50, 60),
-                        labels = c("20-30", "31-40", "41-50", "51-60"))) %>%
-  group_by(age_group) %>%
-  summarise(
-    mean_spent = mean(total_spent),
-    count = n()
-  )
+    # Read and analyze data
+    df <- read_csv(input_file) %>%
+    mutate(date = as.Date(date))
 
-write_csv(age_group_stats, "../outputs/age_group_statistics.csv") 
+    # Calculate and plot daily sales
+    daily_sales <- df %>%
+    group_by(date) %>%
+    summarise(total_sales = sum(total_spent))
+
+    daily_sales_plot <- ggplot(daily_sales, aes(x = date, y = total_sales)) +
+    geom_line() +
+    geom_point() +
+    labs(title = "Daily Sales Trend",
+        x = "Date",
+        y = "Total Sales ($)") +
+    theme_minimal()
+    ggsave(file.path(output_dir, "daily_sales_trend.png"), daily_sales_plot, width = 8, height = 6)
+
+    # Create age distribution plot
+    age_distribution_plot <- ggplot(df, aes(x = age, fill = gender)) +
+    geom_histogram(bins = 5, position = "stack") +
+    labs(title = "Age Distribution by Gender",
+        x = "Age",
+        y = "Count") +
+    theme_minimal() +
+    theme(plot.title = element_text(hjust = 0.5))
+    ggsave(file.path(output_dir, "age_distribution.png"), age_distribution_plot, width = 10, height = 6)
+
+    # Calculate and save average spending by age group
+    age_group_stats <- df %>%
+    mutate(age_group = cut(age, 
+                            breaks = c(20, 30, 40, 50, 60),
+                            labels = c("20-30", "31-40", "41-50", "51-60"))) %>%
+    group_by(age_group) %>%
+    summarise(
+        mean_spent = mean(total_spent),
+        count = n()
+    )
+
+    write_csv(age_group_stats, file.path(output_dir, "age_group_statistics.csv")) 
+
+}
+
+visualize_data(opt$input, opt$output_dir)

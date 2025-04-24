@@ -1,11 +1,19 @@
 ---
 title: "Customer Sales Analysis Report"
-format: html
+format: 
+    html:
+        toc: true
+        embed-resources: true
 execute:
-  echo: true
+  echo: false
   warning: false
   message: false
+  output: true
 ---
+
+```{r}
+library(tidyverse)
+```
 
 # Introduction
 
@@ -13,36 +21,37 @@ This report analyzes customer sales data to understand purchasing patterns and c
 
 ## Data Overview
 
-The dataset contains information about 10 customers, including their demographics and purchasing behavior. Let's start by examining some key statistics.
+The dataset contains information about 10 customers, including their demographics and purchasing behavior. Let's start by examining some key statistics here in @tbl-data-overview.
 
-```{python}
-#| echo: false
-import pandas as pd
-df = pd.read_csv('../data/customer_sales.csv')
-print(df.describe())
+```{r}
+#| echo: false  
+#| label: tbl-data-overview
+#| title: "Data Overview"
+df = read_csv('../data/customer_sales.csv')
+print(df %>% summary())
 ```
 
 ## Customer Demographics and Spending
 
 The age distribution of our customers shows an interesting pattern:
 
-![Age Distribution](../outputs/age_distribution.png)
+![Age Distribution](../outputs/age_distribution.png){#fig-age-distribution}
 
-We can see that our customer base is fairly evenly distributed across different age groups, with a slight concentration in the 30-40 age range.
+In @fig-age-distribution we can see that our customer base is fairly evenly distributed across different age groups, with a slight concentration in the 30-40 age range.
 
 ## Spending Patterns
 
 The relationship between income and total spending reveals some interesting insights:
 
-![Income vs Total Spent](../outputs/income_vs_spent.png)
+![Income vs Total Spent](../outputs/income_vs_spent.png){#fig-income-vs-spent}
 
-There appears to be a positive correlation between income and total spending, though the relationship isn't perfectly linear. This suggests that while higher-income customers tend to spend more, there are other factors influencing purchasing decisions.
+In @fig-income-vs-spent we can see that there appears to be a positive correlation between income and total spending, though the relationship isn't perfectly linear. This suggests that while higher-income customers tend to spend more, there are other factors influencing purchasing decisions.
 
 ## Daily Sales Trends
 
 Looking at the daily sales trend:
 
-![Daily Sales Trend](../outputs/daily_sales_trend.png)
+![Daily Sales Trend](../outputs/daily_sales_trend.png){#fig-daily-sales-trend}
 
 We can observe some variation in daily sales, with certain days showing higher spending patterns. This could be valuable information for inventory and staffing planning.
 
