@@ -26,23 +26,25 @@ The dataset (`customer_sales.csv`) contains information about customer demograph
 ## Requirements
 
 To run the analysis scripts, you'll need:
-- Python 3.8+
-- pandas
-- matplotlib
-- seaborn
+- R 4.0+
+- tidyverse
+- ggplot2
+- dplyr
+- tidyr
+- readr
 - quarto (for report generation)
 
 ## Usage
 
-1. Install the required packages:
-```bash
-pip install -r requirements.txt
+1. Install the required R packages:
+```R
+install.packages(c("tidyverse", "ggplot2", "dplyr", "tidyr", "readr", "quarto"))
 ```
 
 2. Run the analysis scripts:
-```bash
-python scripts/analyze_sales.py
-python scripts/visualize_data.py
+```R
+Rscript scripts/analyze_sales.R
+Rscript scripts/visualize_data.R
 ```
 
 3. Generate the report:
