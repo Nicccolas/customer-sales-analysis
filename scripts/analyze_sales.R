@@ -2,6 +2,9 @@
 library(tidyverse)
 library(docopt)
 
+remotes::install_github("Nicccolas/sales_package")
+library(salespackage)
+
 "This script loads and cleans the dataset.
 
 Usage:
@@ -23,13 +26,7 @@ analyze_sales <- function(input_file, output_dir) {
     write_csv(as.data.frame(summary_stats), file.path(output_dir, "summary_statistics.csv"))
 
     # Simple scatter plot
-    scatter_plot <- ggplot(df, aes(x = income, y = total_spent)) +
-    geom_point() +
-    geom_smooth(method = "lm") +
-    labs(title = "Income vs Total Spent",
-        x = "Income ($)",
-        y = "Total Spent ($)") +
-    theme_minimal()
+    scatter_plot <- scatter(df, x = "income", y = "total_spent")
     ggsave(file.path(output_dir, "income_vs_spent.png"), scatter_plot, width = 8, height = 6) 
 
 }
