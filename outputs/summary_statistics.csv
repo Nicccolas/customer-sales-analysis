@@ -1,0 +1,43 @@
+Var1,Var2,Freq
+, customer_id,Min.   : 1.00  
+, customer_id,1st Qu.: 3.25  
+, customer_id,Median : 5.50  
+, customer_id,Mean   : 5.50  
+, customer_id,3rd Qu.: 7.75  
+, customer_id,Max.   :10.00  
+,     age,Min.   :24.00  
+,     age,1st Qu.:29.75  
+,     age,Median :37.50  
+,     age,Mean   :37.30  
+,     age,3rd Qu.:44.00  
+,     age,Max.   :52.00  
+,   gender,Length:10         
+,   gender,Class :character  
+,   gender,Mode  :character  
+,   gender,NA
+,   gender,NA
+,   gender,NA
+,    income,Min.   : 48000  
+,    income,1st Qu.: 67500  
+,    income,Median : 81500  
+,    income,Mean   : 79800  
+,    income,3rd Qu.: 91000  
+,    income,Max.   :110000  
+,items_purchased,Min.   :2.00  
+,items_purchased,1st Qu.:3.25  
+,items_purchased,Median :4.50  
+,items_purchased,Mean   :4.70  
+,items_purchased,3rd Qu.:5.75  
+,items_purchased,Max.   :8.00  
+, total_spent,Min.   : 95.3  
+, total_spent,1st Qu.:181.6  
+, total_spent,Median :216.6  
+, total_spent,Mean   :224.7  
+, total_spent,3rd Qu.:278.6  
+, total_spent,Max.   :356.8  
+,     date,Min.   :2024-01-15  
+,     date,1st Qu.:2024-01-17  
+,     date,Median :2024-01-19  
+,     date,Mean   :2024-01-19  
+,     date,3rd Qu.:2024-01-21  
+,     date,Max.   :2024-01-24  
