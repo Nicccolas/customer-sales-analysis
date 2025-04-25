@@ -1,6 +1,6 @@
 # Customer Sales Analysis
 
-A simple R project for practicing data analysis and visualization.
+A simple R project for practicing data analysis and visualization. HAHAHAHA ADDRESSING ISSUE GITHUB
 
 ## Project Structure
 
