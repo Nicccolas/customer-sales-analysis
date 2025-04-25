@@ -1,6 +1,6 @@
 .PHONY: all clean data_validation
 
-all: outputs/summary_statistics.csv outputs/income_vs_spent.png outputs/daily_sales_trend.png outputs/age_distribution.png outputs/age_group_statistics.csv reports/report.html reports/report.pdf docs/index.html
+all: outputs/summary_statistics.csv outputs/income_vs_spent.png outputs/daily_sales_trend.png outputs/age_distribution.png outputs/age_group_statistics.csv reports/report.html reports/report.pdf docs/index.html data_validation
 
 # output generation
 outputs/summary_statistics.csv: scripts/analyze_sales.R
